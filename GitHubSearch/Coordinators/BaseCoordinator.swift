@@ -40,3 +40,11 @@ class BaseCoordinator {
         childCoordinators.removeAll()
     }
 }
+
+extension BaseCoordinator: Equatable {
+    
+    static func == (lhs: BaseCoordinator, rhs: BaseCoordinator) -> Bool {
+        return lhs === rhs
+    }
+    
+}

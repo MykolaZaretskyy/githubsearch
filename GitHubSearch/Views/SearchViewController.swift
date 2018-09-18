@@ -7,26 +7,38 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var nextButton: UIButton!
     
     private let searchController = UISearchController(searchResultsController: nil)
+    var disposeBag = DisposeBag()
     
-    var searchBar: UISearchBar { return searchController.searchBar }
+    private var viewModel = SearchViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupSearchController()
+        bind()
+    }
+    
+    func bind() {
+        viewModel.buttonTitle.bind(to: nextButton.rx.title(for: UIControlState.normal)).disposed(by: disposeBag)
+        nextButton.rx.tap.asObservable().bind(onNext: { [weak self] data in
+            self?.viewModel.count.value += 1 }).disposed(by: disposeBag)
     }
     
     func setupSearchController() {
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchBar.showsCancelButton = true
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.searchBar.showsCancelButton = true
         definesPresentationContext = true
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
 }
 

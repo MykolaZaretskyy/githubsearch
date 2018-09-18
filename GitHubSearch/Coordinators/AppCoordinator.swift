@@ -11,16 +11,15 @@ import UIKit
 
 class AppCoordinator: BaseCoordinator {
     
-    let window: UIWindow?
+    private let window: UIWindow?
     
-    lazy var rootViewController: UINavigationController = {
-        return UINavigationController(rootViewController: storyboard.instantiateInitialViewController()!)
-    }()
+    private var rootViewController = UINavigationController()
     
-    let storyboard = UIStoryboard(name: "SearchViewController", bundle: nil)
+    private var searchCoordinator: SearchCoordinator
     
     init(window: UIWindow?) {
         self.window = window
+        searchCoordinator = SearchCoordinator(presenter: rootViewController)
     }
     
     override func start() {
@@ -28,6 +27,8 @@ class AppCoordinator: BaseCoordinator {
             return
         }
         
+        searchCoordinator.start()
+        addChildCoordinator(searchCoordinator)
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
     }
