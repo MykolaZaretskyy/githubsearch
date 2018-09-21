@@ -28,9 +28,10 @@ class SearchViewController: UIViewController {
     }
     
     func bind() {
-        viewModel.buttonTitle.bind(to: nextButton.rx.title(for: UIControlState.normal)).disposed(by: disposeBag)
-        nextButton.rx.tap.asObservable().bind(onNext: { [weak self] data in
-            self?.viewModel.count.value += 1 }).disposed(by: disposeBag)
+        viewModel.bindButtonTap(observable: nextButton.rx.tap.asObservable())
+//        viewModel.buttonTitle.bind(to: nextButton.rx.title(for: UIControlState.normal)).disposed(by: disposeBag)
+//        nextButton.rx.tap.asObservable().bind(onNext: { [weak self] data in
+//            self?.viewModel.count.value += 1 }).disposed(by: disposeBag)
     }
     
     func setupSearchController() {

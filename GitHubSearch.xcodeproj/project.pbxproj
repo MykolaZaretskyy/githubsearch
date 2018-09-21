@@ -11,6 +11,10 @@
 		944740E5215123AC00812903 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944740E4215123AC00812903 /* SearchCoordinator.swift */; };
 		944740E92151314000812903 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944740E82151314000812903 /* SearchViewModel.swift */; };
 		944740EC215151C000812903 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944740EB215151C000812903 /* Resource.swift */; };
+		946D33E721551A89008B8D8C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D33E621551A89008B8D8C /* ApiClient.swift */; };
+		946D33E921551B7B008B8D8C /* GithubRestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D33E821551B7B008B8D8C /* GithubRestService.swift */; };
+		946D33ED21552734008B8D8C /* SearchResultItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D33EC21552734008B8D8C /* SearchResultItemModel.swift */; };
+		946D33F121553F2A008B8D8C /* JsonDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D33F021553F2A008B8D8C /* JsonDecodable.swift */; };
 		946F11CF214FF09400082DDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F11CE214FF09400082DDF /* AppDelegate.swift */; };
 		946F11D1214FF09400082DDF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F11D0214FF09400082DDF /* SearchViewController.swift */; };
 		946F11D4214FF09400082DDF /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946F11D2214FF09400082DDF /* SearchViewController.storyboard */; };
@@ -25,6 +29,10 @@
 		944740E4215123AC00812903 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		944740E82151314000812903 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		944740EB215151C000812903 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		946D33E621551A89008B8D8C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		946D33E821551B7B008B8D8C /* GithubRestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRestService.swift; sourceTree = "<group>"; };
+		946D33EC21552734008B8D8C /* SearchResultItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItemModel.swift; sourceTree = "<group>"; };
+		946D33F021553F2A008B8D8C /* JsonDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecodable.swift; sourceTree = "<group>"; };
 		946F11CB214FF09400082DDF /* GitHubSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		946F11CE214FF09400082DDF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		946F11D0214FF09400082DDF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -54,8 +62,19 @@
 			isa = PBXGroup;
 			children = (
 				944740EB215151C000812903 /* Resource.swift */,
+				946D33E621551A89008B8D8C /* ApiClient.swift */,
+				946D33E821551B7B008B8D8C /* GithubRestService.swift */,
+				946D33F021553F2A008B8D8C /* JsonDecodable.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		946D33EB215524DF008B8D8C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				946D33EC21552734008B8D8C /* SearchResultItemModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		946F11C2214FF09400082DDF = {
@@ -79,6 +98,7 @@
 		946F11CD214FF09400082DDF /* GitHubSearch */ = {
 			isa = PBXGroup;
 			children = (
+				946D33EB215524DF008B8D8C /* Models */,
 				946F11E4214FF16D00082DDF /* Services */,
 				946F11E3214FF16400082DDF /* Coordinators */,
 				946F11E1214FF0BB00082DDF /* Resources */,
@@ -268,9 +288,13 @@
 				946F11E9214FF8F500082DDF /* AppCoordinator.swift in Sources */,
 				944740E92151314000812903 /* SearchViewModel.swift in Sources */,
 				944740E5215123AC00812903 /* SearchCoordinator.swift in Sources */,
+				946D33E721551A89008B8D8C /* ApiClient.swift in Sources */,
 				946F11D1214FF09400082DDF /* SearchViewController.swift in Sources */,
+				946D33F121553F2A008B8D8C /* JsonDecodable.swift in Sources */,
+				946D33E921551B7B008B8D8C /* GithubRestService.swift in Sources */,
 				946F11E6214FF1EB00082DDF /* BaseCoordinator.swift in Sources */,
 				946F11CF214FF09400082DDF /* AppDelegate.swift in Sources */,
+				946D33ED21552734008B8D8C /* SearchResultItemModel.swift in Sources */,
 				944740EC215151C000812903 /* Resource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
