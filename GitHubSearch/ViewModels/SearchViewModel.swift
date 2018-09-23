@@ -8,21 +8,27 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class SearchViewModel {
     
-    var count = Variable<Int>(0)
     var githubService = GithubRestService()
-    var items: [SearchResultItemModel]?
     
-    var buttonTitle: Observable<String> {
-        return count.asObservable().map{String($0)}
-    }
+    var searchText = Variable("")
     
-    func bindButtonTap(observable: Observable<Void>) {
-        observable.bind {
-            self.githubService.getRepositories(by: "mykola").bind(onNext: { items in self.items = items })
-        }
+    var searchItems: Driver<[SearchResultItemModel]> {
+        return searchText.asObservable()
+        .throttle(0.3, scheduler: MainScheduler.instance)
+        .distinctUntilChanged()
+        .filter({s in !s.isEmpty})
+        .flatMapFirst(githubService.getRepositories)
+        .asDriver(onErrorJustReturn: [])
     }
+
+//    func bindButtonTap(observable: Observable<Void>) {
+//        observable.bind {
+//            self.githubService.getRepositories(by: "mykola").bind(onNext: { items in self.items = items })
+//        }
+//    }
     
 }

@@ -29,10 +29,24 @@ final class ApiClient {
     }
     
     private func makeRequest(urlPreffix: String, method: Method) -> URLRequest {
-        let url = baseURL.appendingPathComponent(urlPreffix)
+        var url: URL?
+        var query: String?
+        
+        if urlPreffix.contains("?") {
+            let parts = urlPreffix.split(separator: "?")
+            let url_part = String(parts[0])
+            query = String(parts[1])
+            url = baseURL.appendingPathComponent(url_part)
+        } else {
+            url = baseURL.appendingPathComponent(urlPreffix)
+        }
         
         guard let components = NSURLComponents(url: url!, resolvingAgainstBaseURL: false) else {
             fatalError("Unable to create URL components from \(url!)")
+        }
+        
+        if let query = query {
+            components.query = query
         }
         
         guard let finalUrl = components.url else {

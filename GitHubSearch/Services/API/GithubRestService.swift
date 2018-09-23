@@ -9,6 +9,10 @@
 import Foundation
 import RxSwift
 
+enum DecodeError : Error {
+    case parseJsonError()
+}
+
 class GithubRestService {
     
     private let baseUrl = "https://api.github.com/"
@@ -20,20 +24,24 @@ class GithubRestService {
         apiClient = ApiClient(baseURL: url)
     }
     
-    func getRepositories(by name: String) -> Observable<[SearchResultItemModel]?> {
+    func getRepositories(by name: String) -> Observable<[SearchResultItemModel]> {
         let urlPreffix = "search/users?q=\(name)"
         return apiClient.request(url: urlPreffix, method: .GET).map(decode)
     }
     
-    private func decode(data: Data) -> [SearchResultItemModel]? {
+    private func decode(data: Data) throws -> [SearchResultItemModel] {
         guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) else {
-            return nil
+            throw DecodeError.parseJsonError()
         }
         
-        guard let dictionaries = jsonObject as? [JsonDictionary] else {
-            return nil
+        guard let dictionary = jsonObject as? JsonDictionary else {
+            return []
         }
         
-        return nil
+        guard let searchItems = dictionary["items"] as? [JsonDictionary] else {
+            return []
+        }
+        
+        return searchItems.map(SearchResultItemModel.init)
     }
 }

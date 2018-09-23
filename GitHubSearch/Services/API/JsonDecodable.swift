@@ -11,5 +11,5 @@ import Foundation
 typealias JsonDictionary = [String: AnyObject]
 
 protocol JsonDecodable {
-    init?(dictionary: JsonDictionary)
+    init(dictionary: JsonDictionary)
 }
