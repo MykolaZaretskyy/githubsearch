@@ -22,26 +22,25 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.register(SearchCellView.self, forCellReuseIdentifier: SearchCellView.key)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        print("Current thread \(Thread.current)")
+        tableView.register(UINib(nibName: SearchCellView.cellIdentifier, bundle: nil), forCellReuseIdentifier: SearchCellView.cellIdentifier)
         setupSearchController()
         bind()
     }
     
     func bind() {
-//        searchController.searchBar.rx.text.orEmpty.bind(onNext: { [weak self] s in
-//            print(s)
-//            self?.viewModel.searchText.value = s
-//        })
         searchController.searchBar.rx.text.orEmpty
             .bind(to: viewModel.searchText)
             .disposed(by: disposeBag)
         
         viewModel.searchItems
-            .drive(tableView.rx.items(cellIdentifier: "Cell")) { _, searchItem, cell in
-//                cell.titleLabel.text = searchItem.login
-                cell.textLabel?.text = searchItem.login
+            .drive(tableView.rx.items(cellIdentifier: SearchCellView.cellIdentifier, cellType: SearchCellView.self)) { row, data, cell in
+                cell.loginLabel.text = data.login
             }
+            .disposed(by: disposeBag)
+        
+        viewModel.searchItems.map { $0.count == 0 }
+            .drive(tableView.rx.isHidden)
             .disposed(by: disposeBag)
 
 //        viewModel.bindButtonTap(observable: nextButton.rx.tap.asObservable())

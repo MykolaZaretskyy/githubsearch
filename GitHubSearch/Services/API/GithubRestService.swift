@@ -26,6 +26,7 @@ class GithubRestService {
     
     func getRepositories(by name: String) -> Observable<[SearchResultItemModel]> {
         let urlPreffix = "search/users?q=\(name)"
+        print("getRepositories Current thread \(Thread.current)")
         return apiClient.request(url: urlPreffix, method: .GET).map(decode)
     }
     

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		089577E76BA5ECB7FB2D160E /* Pods_GitHubSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC77D4936E329B3B44E798C /* Pods_GitHubSearch.framework */; };
 		376D82952155A13C005A0CB7 /* SearchResultItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376D82942155A13C005A0CB7 /* SearchResultItemModel.swift */; };
-		37E9144E2156EBA700894BF9 /* SearchCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37E9144D2156EBA700894BF9 /* SearchCellView.xib */; };
-		37E914522156EFD000894BF9 /* SearchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E914512156EFD000894BF9 /* SearchCellView.swift */; };
+		94410DEC215906BC0015A078 /* SearchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94410DEA215906BC0015A078 /* SearchCellView.swift */; };
+		94410DED215906BC0015A078 /* SearchCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94410DEB215906BC0015A078 /* SearchCellView.xib */; };
 		944740E5215123AC00812903 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944740E4215123AC00812903 /* SearchCoordinator.swift */; };
 		944740E92151314000812903 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944740E82151314000812903 /* SearchViewModel.swift */; };
 		946D33E721551A89008B8D8C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946D33E621551A89008B8D8C /* ApiClient.swift */; };
@@ -27,9 +27,9 @@
 
 /* Begin PBXFileReference section */
 		376D82942155A13C005A0CB7 /* SearchResultItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItemModel.swift; sourceTree = SOURCE_ROOT; };
-		37E9144D2156EBA700894BF9 /* SearchCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCellView.xib; sourceTree = "<group>"; };
-		37E914512156EFD000894BF9 /* SearchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellView.swift; sourceTree = "<group>"; };
 		4FB97BCBA3427E48177657C4 /* Pods-GitHubSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubSearch/Pods-GitHubSearch.debug.xcconfig"; sourceTree = "<group>"; };
+		94410DEA215906BC0015A078 /* SearchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCellView.swift; sourceTree = "<group>"; };
+		94410DEB215906BC0015A078 /* SearchCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCellView.xib; sourceTree = "<group>"; };
 		944740E4215123AC00812903 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		944740E82151314000812903 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		946D33E621551A89008B8D8C /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
@@ -63,8 +63,8 @@
 		37E9144C2156EB7600894BF9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				37E9144D2156EBA700894BF9 /* SearchCellView.xib */,
-				37E914512156EFD000894BF9 /* SearchCellView.swift */,
+				94410DEA215906BC0015A078 /* SearchCellView.swift */,
+				94410DEB215906BC0015A078 /* SearchCellView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37E9144E2156EBA700894BF9 /* SearchCellView.xib in Resources */,
+				94410DED215906BC0015A078 /* SearchCellView.xib in Resources */,
 				946F11D9214FF09600082DDF /* LaunchScreen.storyboard in Resources */,
 				946F11D6214FF09600082DDF /* Assets.xcassets in Resources */,
 				946F11D4214FF09400082DDF /* SearchViewController.storyboard in Resources */,
@@ -305,7 +305,7 @@
 				946F11D1214FF09400082DDF /* SearchViewController.swift in Sources */,
 				946D33F121553F2A008B8D8C /* JsonDecodable.swift in Sources */,
 				946D33E921551B7B008B8D8C /* GithubRestService.swift in Sources */,
-				37E914522156EFD000894BF9 /* SearchCellView.swift in Sources */,
+				94410DEC215906BC0015A078 /* SearchCellView.swift in Sources */,
 				946F11E6214FF1EB00082DDF /* BaseCoordinator.swift in Sources */,
 				946F11CF214FF09400082DDF /* AppDelegate.swift in Sources */,
 			);

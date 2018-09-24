@@ -14,21 +14,17 @@ class SearchViewModel {
     
     var githubService = GithubRestService()
     
-    var searchText = Variable("")
+    var searchText = BehaviorSubject(value: "")
+    var isLoading = BehaviorSubject(value: false)
     
     var searchItems: Driver<[SearchResultItemModel]> {
         return searchText.asObservable()
-        .throttle(0.3, scheduler: MainScheduler.instance)
+        .throttle(1, scheduler: MainScheduler.instance)
         .distinctUntilChanged()
         .filter({s in !s.isEmpty})
+        .do(onNext: { _ in self.isLoading.onNext(true) })
         .flatMapFirst(githubService.getRepositories)
+        .do(onNext: { _ in self.isLoading.onNext(false) })
         .asDriver(onErrorJustReturn: [])
     }
-
-//    func bindButtonTap(observable: Observable<Void>) {
-//        observable.bind {
-//            self.githubService.getRepositories(by: "mykola").bind(onNext: { items in self.items = items })
-//        }
-//    }
-    
 }
